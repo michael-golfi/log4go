@@ -1,0 +1,41 @@
+logging:
+  filter:
+    enabled: true
+    tag: stdout
+    type: console
+    level: DEBUG
+
+  filter:
+    enabled: true
+    tag: file
+    type: file
+    level: FINEST
+    properties:
+      filename: test.log
+      format: "[%D %T] [%L] (%S) %M"
+      rotate: false
+      maxsize: 0M
+      maxlines: 0K
+      daily: true
+    
+  filter:
+    enabled: true
+    tag: xmllog
+    type: xml
+    level: TRACE
+    properties:
+      filename: trace.xml
+      rotate: true
+      maxsize: 100M
+      maxrecords: 6K
+      daily: false
+
+  filter:
+    enabled: false
+    tag: donotopen
+    type: socket
+    level: FINEST
+    properties:
+      endpoint: 192.168.1.255:12124
+      protocol: udp
+  
